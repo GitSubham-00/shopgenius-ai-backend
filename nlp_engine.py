@@ -1,9 +1,10 @@
 # nlp_engine.py
 
 import re
-import spacy
+import en_core_web_sm   # <-- UPDATED
 
-nlp = spacy.load("en_core_web_sm")
+# Load Spacy model (Render compatible)
+nlp = en_core_web_sm.load()
 
 CATEGORIES = {
     "phone": ["phone", "mobile", "smartphone", "iphone"],
@@ -45,7 +46,6 @@ def parse_query(user_query: str):
 def extract_compare_products(text: str):
     text = text.lower().strip()
 
-    # Supported patterns:
     patterns = [
         r"compare (.+?) vs (.+)",
         r"compare (.+?) and (.+)",
